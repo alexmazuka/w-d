@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Лекція 3.2 — Російські наративи та дезінформація щодо ВПО</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAFAF7; --ink:#1C2430; --steel:#5A6B7A;
+  --alarm:#C4322E; --alarm-bg:#FBEEED;
+  --caution:#B8860B; --caution-bg:#FBF4E3;
+  --ok:#2E6E4E; --ok-bg:#EBF3EE;
+  --line:#DDE1DC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.65}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+header{border-bottom:3px solid var(--ink);padding:48px 0 32px}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;color:var(--steel);text-transform:uppercase;margin-bottom:14px}
+h1{font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(26px,4.6vw,40px);line-height:1.18;letter-spacing:-.01em}
+.sub{margin-top:16px;font-size:18px;color:var(--steel);max-width:640px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:12.5px;border:1px solid var(--line);border-radius:999px;padding:5px 13px;background:#fff;color:var(--steel)}
+.frame-note{margin:34px 0 0;padding:18px 20px;border-left:4px solid var(--ink);background:#fff;font-size:16px}
+.frame-note strong{font-weight:600}
+section{padding:44px 0 8px}
+h2{font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(19px,3vw,25px);margin-bottom:8px}
+.sec-lede{color:var(--steel);max-width:640px;margin-bottom:26px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:26px 0 6px}
+.stat{background:#fff;padding:18px 16px}
+.stat b{font-family:'Unbounded',sans-serif;font-weight:700;font-size:24px;display:block}
+.stat span{font-size:13px;color:var(--steel)}
+/* case card = signature element */
+.case{background:#fff;border:1px solid var(--line);border-radius:14px;margin:0 0 34px;overflow:hidden}
+.case-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:13px 20px;border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--steel)}
+.plat{font-weight:500;color:var(--ink);border:1px solid var(--ink);border-radius:4px;padding:2px 8px}
+.flagged{color:#fff;background:var(--alarm);border-radius:4px;padding:2px 8px;font-weight:500}
+.msg{padding:22px 20px 6px;position:relative}
+.msg .fwd{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--steel);margin-bottom:10px}
+.bubble{background:var(--paper);border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:16px 18px;font-size:16.5px;white-space:pre-line}
+mark{background:var(--alarm-bg);color:var(--alarm);font-weight:600;padding:0 3px;border-radius:3px}
+.msg-meta{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--steel);padding:10px 2px 0}
+.decon{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-top:1px solid var(--line);margin-top:16px}
+.decon>div{background:#fff;padding:15px 20px}
+.decon b{display:block;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--steel);margin-bottom:5px}
+.decon p{font-size:15px}
+.decon .truth{background:var(--ok-bg)}
+.decon .truth b{color:var(--ok)}
+@media(max-width:620px){.decon{grid-template-columns:1fr}}
+/* stop signals */
+.signals{display:grid;gap:12px;margin-top:8px}
+.sig{display:flex;gap:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;align-items:flex-start}
+.sig .dot{flex:0 0 auto;width:14px;height:14px;border-radius:50%;background:var(--alarm);margin-top:6px}
+.sig p{font-size:15.5px}
+.sig b{font-weight:600}
+/* fact box */
+.facts{background:var(--ok-bg);border:1px solid #CBDFD3;border-radius:14px;padding:24px 24px 10px;margin-top:6px}
+.facts h3{font-family:'Unbounded',sans-serif;font-weight:500;font-size:17px;color:var(--ok);margin-bottom:14px}
+.facts p{margin-bottom:14px;font-size:16px}
+.src{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 14px}
+.src a{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 15px;text-decoration:none}
+.src a:hover{border-color:var(--ink)}
+/* homework */
+.hw{border:2px dashed var(--steel);border-radius:14px;padding:22px 24px;margin-top:6px}
+.hw b{font-family:'Unbounded',sans-serif;font-weight:500;font-size:16px;display:block;margin-bottom:8px}
+footer{margin-top:56px;border-top:1px solid var(--line);padding:26px 0 48px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--steel);line-height:1.8}
+a{color:inherit}
+@media(prefers-reduced-motion:no-preference){
+  .case{transition:box-shadow .2s}
+  .case:hover{box-shadow:0 4px 22px rgba(28,36,48,.07)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Українська Валькірія · Модуль 3 · Лекція 3.2 · 14.07.2026</div>
+    <h1>«Пенсії скасують»: як працює дезінформація про виплати — на реальних прикладах</h1>
+    <p class="sub">Російські наративи та дезінформація, спрямована проти внутрішньо переміщених осіб. Усі приклади нижче — справжні повідомлення, зафіксовані системою моніторингу за січень–липень 2026 року.</p>
+    <div class="meta">
+      <span class="chip">123 повідомлення в моніторингу</span>
+      <span class="chip">6 платформ</span>
+      <span class="chip">01.01–03.07.2026</span>
+    </div>
+    <div class="frame-note"><strong>Навіщо ми це розбираємо.</strong> Ці повідомлення — зброя, спрямована проти нас. Ми розглядаємо їх як зброю: щоб бачити механізм, а не піддаватися дії. Якщо якийсь приклад ви бачили у своєму чаті — це нормально, саме так вони й працюють.</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Що показав моніторинг</h2>
+    <p class="sec-lede">Пік чуток — не випадковість. Хвилі повідомлень «пенсії скасують» прив'язані до реальних бюрократичних подій: січневе призупинення виплат через ідентифікацію та березнево-квітневі постанови уряду.</p>
+    <div class="stats">
+      <div class="stat"><b>337 тис.</b><span>пенсіонерам-ВПО реально призупинили виплати в січні — це паливо для чуток</span></div>
+      <div class="stat"><b>26 605</b><span>переглядів у найпопулярнішого страшилки-відео на YouTube</span></div>
+      <div class="stat"><b>67 із 123</b><span>повідомлень — коментарі: чутки живуть у розмовах, не в статтях</span></div>
+      <div class="stat"><b>26.03</b><span>найгарячіший день — одразу після постанови КМУ №390 про виплати</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>П'ять реальних прикладів — розбираємо механізм</h2>
+    <p class="sec-lede">Червоним позначені слова-гачки: те, що має викликати емоцію раніше, ніж думку. Схема розбору однакова: хто каже → на яку емоцію тисне → що насправді → кому вигідно.</p>
+
+    <!-- CASE 1 -->
+    <div class="case">
+      <div class="case-head"><span class="plat">YOUTUBE</span><span>«Українська хвиля» · 131 000 підписників</span><span>21.01.2026 · 26 605 переглядів</span></div>
+      <div class="msg">
+        <div class="bubble"><mark>❌ПОГАНІ новини</mark> для ПЕНСІОНЕРІВ‼️ <mark>ПЕНСІЇ СКАСУЮТЬ</mark> у 2026?! МВФ <mark>вимагає ЗАБРАТИ</mark> СУБСИДІЇ!
+
+Пенсії та соціальна допомога — <mark>ПІД ЗАГРОЗОЮ</mark> у 2026! Хто може залишитись БЕЗ ВИПЛАТ? Нова <mark>ШОКУЮЧА ВИМОГА</mark> МВФ! Дізнайтесь ПЕРШИМИ!</div>
+        <div class="msg-meta">заголовок і опис відео, збережено оригінальне написання</div>
+      </div>
+      <div class="decon">
+        <div><b>Хто каже</b><p>Анонімний YouTube-канал, що заробляє на переглядах. Зверніть увагу на знак питання після «СКАСУЮТЬ?!» — юридичний захист: формально це «питання», не твердження.</p></div>
+        <div><b>На яку емоцію тисне</b><p>Страх втрати грошей + образ зовнішнього ворога («МВФ вимагає»). КАПС і ‼️ — сигнал терміновості, який вимикає критичне мислення.</p></div>
+        <div class="truth"><b>Що насправді</b><p>Жодного рішення про скасування пенсій немає. У 2026 році уряд навпаки розширив виплати для дітей ВПО та продовжив періоди допомоги.</p></div>
+        <div><b>Кому вигідно</b><p>Каналу — гроші за перегляди. Ворожій пропаганді — готова паніка, яку можна підхопити й підсилити.</p></div>
+      </div>
+    </div>
+
+    <!-- CASE 2 -->
+    <div class="case">
+      <div class="case-head"><span class="plat">TELEGRAM</span><span>«Информ Центр»</span><span class="flagged">⚑ джерело дезінформації — Osavul Threat Intelligence</span><span>17.02.2026</span></div>
+      <div class="msg">
+        <div class="fwd">↪ переслане повідомлення</div>
+        <div class="bubble"><mark>Замість індексації: пенсії скасують</mark> у березні, якщо цього не зробити
+
+Українські пенсіонери можуть зіткнутися з тимчасовим призупиненням виплат, якщо процес не буде завершено до 1 квітня 2026 року. Це стосується тих, хто мав пройти ідентифікацію…</div>
+      </div>
+      <div class="decon">
+        <div><b>Хто каже</b><p>Канал, офіційно позначений як джерело дезінформації. Найпідступніший тип: у тексті — правда про ідентифікацію, у заголовку — брехня про «скасування».</p></div>
+        <div><b>На яку емоцію тисне</b><p>Підміна: «тимчасове призупинення для тих, хто не пройшов ідентифікацію» перетворюється на «пенсії скасують». Люди пересилають заголовок, не текст.</p></div>
+        <div class="truth"><b>Що насправді</b><p>Ідентифікація — реальна вимога ПФУ. Після її проходження виплати поновлюють, включно з заборгованістю. «Скасування» немає.</p></div>
+        <div><b>Кому вигідно</b><p>Це класика ворожої ІПсО: взяти реальний бюрократичний біль і докрутити його до «держава вас грабує».</p></div>
+      </div>
+    </div>
+
+    <!-- CASE 3 -->
+    <div class="case">
+      <div class="case-head"><span class="plat">TIKTOK</span><span>«Що Приховали?»</span><span>22.02.2026</span></div>
+      <div class="msg">
+        <div class="bubble">ПЕНСІЙНИЙ ФОНД <mark>ПОЧАВ «ЧИСТКУ»</mark>? КОМУ ЗА КОРДОНОМ ПРИПИНЯТЬ ВИПЛАТИ! 👵❌ <mark>Виїхали і думали, що гроші будуть капати вічно?</mark> Нові правила ідентифікації: якщо не підтвердиш, що живий — пенсію скасують. Інструкція, <mark>яка врятує ваші гроші</mark>.</div>
+        <div class="msg-meta">опис відео; сама назва каналу — «Що Приховали?» — вже є технікою</div>
+      </div>
+      <div class="decon">
+        <div><b>Хто каже</b><p>Анонімний TikTok-акаунт. Назва каналу продає конспірологію: «від вас щось приховують, а ми відкриємо».</p></div>
+        <div><b>На яку емоцію тисне</b><p>Подвійний удар: страх («чистка») + приниження тих, хто виїхав («думали, гроші капатимуть вічно») — це і є мова розколу між тими, хто поїхав, і тими, хто лишився.</p></div>
+        <div class="truth"><b>Що насправді</b><p>Щорічна ідентифікація для отримувачів за кордоном існує давно і проходиться онлайн через відеозв'язок. Це не «чистка».</p></div>
+        <div><b>Кому вигідно</b><p>Каналу — охоплення. Наративу розколу — ще одна цеглинка у «свої проти своїх».</p></div>
+      </div>
+    </div>
+
+    <!-- CASE 4 -->
+    <div class="case">
+      <div class="case-head"><span class="plat">WEB</span><span>znaj.ua · аудиторія 5,1 млн</span><span>27.06.2026</span></div>
+      <div class="msg">
+        <div class="bubble">Українцям залишилося <mark>менше тижня</mark>, щоб оновити свої персональні дані в банках — інакше з липня можна <mark>залишитися без грошей на рахунку</mark>… Під найбільшим ризиком — ті, хто отримує соціальні виплати… тимчасове блокування загрожує насамперед <mark>внутрішньо переміщеним особам</mark>…</div>
+        <div class="msg-meta">того самого дня сайт випустив ще 3 схожі статті: «гроші заморозять», «виплати призупинять», «отримають не всі»</div>
+      </div>
+      <div class="decon">
+        <div><b>Хто каже</b><p>Клікбейт-ферма: конвеєр майже однакових статей про «блокування» і «заморозку», без посилань на первинні документи.</p></div>
+        <div><b>На яку емоцію тисне</b><p>Штучний дедлайн («менше тижня!») + пряме називання ВПО як групи ризику. Тривожна людина клікає й пересилає «щоб попередити своїх».</p></div>
+        <div class="truth"><b>Що насправді</b><p>Планове оновлення даних у банках — стандартна процедура фінмоніторингу без «липневої заморозки всіх рахунків».</p></div>
+        <div><b>Кому вигідно</b><p>Сайту — трафік і реклама. Побічний ефект — постійний фоновий стрес у ВПО і звичка панікувати від кожного «дедлайну».</p></div>
+      </div>
+    </div>
+
+    <!-- CASE 5 -->
+    <div class="case">
+      <div class="case-head"><span class="plat">TWITTER / X</span><span>коментар під постом великого акаунта</span><span>01.01.2026</span></div>
+      <div class="msg">
+        <div class="bubble">А українцям, <mark>яких здали в окупацію</mark>, пенсію скасували...</div>
+        <div class="msg-meta">один рядок, 69 переглядів — але саме з таких крапель складається наратив</div>
+      </div>
+      <div class="decon">
+        <div><b>Хто каже</b><p>Звичайний акаунт у коментарях. Не бот і не канал — і саме тому таке звучить переконливо: «пише ж жива людина».</p></div>
+        <div><b>На яку емоцію тисне</b><p>Два меседжі в одному реченні: «вас зрадили» («здали в окупацію») + «вас пограбували» («пенсію скасували»). Це серцевина наративу «влада вас покинула».</p></div>
+        <div class="truth"><b>Що насправді</b><p>Пенсії людям на ТОТ не «скасовано» — виплати накопичуються і доступні після виїзду на підконтрольну територію та ідентифікації.</p></div>
+        <div><b>Кому вигідно</b><p>Росії: мета цього наративу — щоб люди зневірилися, не виїжджали з окупації або поверталися туди.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Стоп-сигнали: коли повідомлення треба перевірити, а не переслати</h2>
+    <div class="signals">
+      <div class="sig"><span class="dot"></span><p><b>Емоція попереду фактів.</b> КАПС, ‼️, «ШОК», «ТЕРМІНОВО» — текст хоче, щоб ви злякалися раніше, ніж подумали.</p></div>
+      <div class="sig"><span class="dot"></span><p><b>Категоричний заголовок + обережний текст.</b> «Скасують!» у заголовку, «можуть тимчасово призупинити, якщо…» — всередині. Пересилають заголовок.</p></div>
+      <div class="sig"><span class="dot"></span><p><b>Штучний дедлайн.</b> «Залишилося 4 дні», «з 1 числа все зміниться» — тиск часу вимикає перевірку.</p></div>
+      <div class="sig"><span class="dot"></span><p><b>Анонімне джерело.</b> Немає автора, немає посилання на постанову чи офіційний сайт — немає відповідальності.</p></div>
+      <div class="sig"><span class="dot"></span><p><b>«Вас зрадили / вам не скажуть».</b> Меседж «влада вас кинула» або «від вас приховують» — фірмовий почерк ворожих наративів.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Що насправді з виплатами у 2026 році</h2>
+    <div class="facts">
+      <h3>Факти замість чуток</h3>
+      <p>Виплати для дітей ВПО відновлено незалежно від доходу батьків, а кількість шестимісячних періодів допомоги подовжено з чотирьох до п'яти (постанови КМУ №390 від 18.03.2026 та №494 від 10.04.2026).</p>
+      <p>Січневе призупинення пенсій стосувалося тих, хто не пройшов нову процедуру ідентифікації, — і це реальна проблема комунікації держави, а не «скасування пенсій». Після проходження процедури виплати поновлюються.</p>
+      <p><strong>Перевіряти тут — і тільки тут:</strong></p>
+      <div class="src">
+        <a href="https://www.pfu.gov.ua" target="_blank" rel="noopener">pfu.gov.ua — Пенсійний фонд</a>
+        <a href="https://www.msp.gov.ua" target="_blank" rel="noopener">msp.gov.ua — Мінсоцполітики</a>
+        <a href="https://diia.gov.ua" target="_blank" rel="noopener">diia.gov.ua — Дія</a>
+        <a href="https://cpd.gov.ua" target="_blank" rel="noopener">cpd.gov.ua — Центр протидії дезінформації</a>
+      </div>
+      <p>Гаряча лінія УВКБ ООН для ВПО: 0 800 307 711 (пн–пт, 9:00–18:00).</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Домашнє завдання</h2>
+    <div class="hw">
+      <b>Зафіксуйте один приклад</b>
+      <p>Знайдіть у своїх чатах або стрічці одне повідомлення про виплати чи ВПО, яке викликало у вас тривогу. Зробіть скріншот і розберіть його за нашою схемою: <em>хто каже → на яку емоцію тисне → що насправді → кому вигідно</em>. Обговоримо на наступній зустрічі.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Методологія: 123 публічні повідомлення (Facebook 55, Web 33, Telegram 30, YouTube 3, Twitter 1, TikTok 1), зафіксовані платформою моніторингу Osavul за запитом «пенсії + скасування», період 01.01–03.07.2026. Приклади наведено з освітньою метою, з мінімальним цитуванням та збереженням оригінального написання. Позначка «джерело дезінформації» — за даними Osavul Threat Intelligence.<br>
+    ГО «Українська Валькірія» · Модуль 3 «Інформаційна безпека» · Лекція 3.2 · липень 2026
+  </div>
+</footer>
+
+</body>
+</html>
